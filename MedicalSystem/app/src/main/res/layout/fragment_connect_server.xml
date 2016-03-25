@@ -1,0 +1,46 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.test.medicalsystem.login.ConnectServerFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal|top">
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:layout_weight="8"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:hint="@string/server_domain"
+                android:text="http://192.168.1.233:8888"
+                android:id="@+id/domain_edittext" />
+
+            <Button
+                android:layout_marginLeft="@dimen/component_margin"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="@string/internet_test"
+                android:id="@+id/test_button" />
+        </LinearLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/save_internet_setting"
+            android:id="@+id/save_setting_button"
+            android:layout_gravity="center_horizontal" />
+    </LinearLayout>
+</FrameLayout>

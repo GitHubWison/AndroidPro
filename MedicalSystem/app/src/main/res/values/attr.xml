@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StatusButton">
+        <attr name="notClickBgColor" format="color"/>
+        <attr name="clickedBgColor" format="color"/>
+        <attr name="notClickFontColor" format="color"/>
+        <attr name="clickedFontColor" format="color"/>
+    </declare-styleable>
+
+</resources>
