@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.system.ErrnoException;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -29,6 +30,7 @@ import com.test.medicalsystem.ui.ChooseDialog;
 import org.json.JSONObject;
 
 import java.lang.reflect.Method;
+import java.net.ConnectException;
 import java.security.DomainCombiner;
 
 import cz.msebera.android.httpclient.Header;
@@ -56,9 +58,9 @@ public class ConnectServerFragment extends Fragment implements View.OnClickListe
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initDatas();
-        initViews();
-        initEvents();
+//        initDatas();
+//        initViews();
+//        initEvents();
 
     }
     private void initDatas()
@@ -86,36 +88,46 @@ public class ConnectServerFragment extends Fragment implements View.OnClickListe
             case R.id.test_button:
                 if (isInputDomainNotNull())
                 {
-                    AsyncHttpClient client = new AsyncHttpClient();
-                    client.setTimeout(8000);
-                    client.setBasicAuth("Mdsd.Phep.Api", "mdsd.phep.api.2005$");
-                    client.post(domainEditText.getText().toString() + MethodModel.testConnection, new JsonHttpResponseHandler(){
-                        @Override
-                        public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                            super.onSuccess(statusCode, headers, response);
-                            //                            弹出是否要保存到sp的选择框
-                            new ChooseDialog(getContext(), getResources().getString(R.string.alert_issave_internet_setting), true, new ChooseDialog.OnSureListener() {
-                                @Override
-                                public void doAfterSure() {
+//                    try {
+                        AsyncHttpClient client = new AsyncHttpClient();
+                        client.setTimeout(5000);
+                        client.setBasicAuth("Mdsd.Phep.Api", "mdsd.phep.api.2005$");
+                        client.post(domainEditText.getText().toString() + MethodModel.testConnection, new JsonHttpResponseHandler(){
+                            @Override
+                            public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                super.onSuccess(statusCode, headers, response);
+                                //                            弹出是否要保存到sp的选择框
+                                new ChooseDialog(getContext(), getResources().getString(R.string.alert_issave_internet_setting), true, new ChooseDialog.OnSureListener() {
+                                    @Override
+                                    public void doAfterSure() {
 //                                    保存到sp
-                                    Tool.saveSp(getContext(), SPreference.Login.class.getName(), SPreference.Login.domain, domainEditText.getText().toString());
-                                    Toast.makeText(getContext(), getResources().getString(R.string.save_success), Toast.LENGTH_SHORT).show();
+                                        Tool.saveSp(getContext(), SPreference.Login.sp_name, SPreference.Login.domain, domainEditText.getText().toString());
+                                        Toast.makeText(getContext(), getResources().getString(R.string.save_success), Toast.LENGTH_SHORT).show();
 
-                                }
+                                    }
 
-                                @Override
-                                public void doAfterCancle() {
+                                    @Override
+                                    public void doAfterCancle() {
 
-                                }
-                            }).show();
-                        }
+                                    }
+                                }).show();
+                            }
 
-                        @Override
-                        public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
-                            super.onFailure(statusCode, headers, throwable, errorResponse);
-                            Toast.makeText(getContext(), getResources().getString(R.string.alert_wrong_internet), Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                            @Override
+                            public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
+                                super.onFailure(statusCode, headers, throwable, errorResponse);
+                                Toast.makeText(getContext(), getResources().getString(R.string.alert_wrong_internet), Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+//                    }
+//                    catch (Exception e )
+//                    {
+//                        Log.d("error_msg","出错啦");
+//                    }
+
+
+
 
                 }
 
@@ -124,7 +136,7 @@ public class ConnectServerFragment extends Fragment implements View.OnClickListe
                 if (isInputDomainNotNull())
                 {
 //                    只保存正确的服务器地址
-                    Tool.saveSp(getContext(), SPreference.Login.class.getName(), SPreference.Login.domain, domainEditText.getText().toString());
+                    Tool.saveSp(getContext(), SPreference.Login.sp_name, SPreference.Login.domain, domainEditText.getText().toString());
                 }
                 break;
             default:

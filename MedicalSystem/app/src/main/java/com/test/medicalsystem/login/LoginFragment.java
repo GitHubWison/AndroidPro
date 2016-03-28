@@ -1,14 +1,9 @@
 package com.test.medicalsystem.login;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.hardware.usb.UsbRequest;
-import android.net.ConnectivityManager;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.loopj.android.http.AsyncHttpClient;
-import com.loopj.android.http.JsonHttpResponseHandler;
-import com.loopj.android.http.RequestParams;
-import com.test.medicalsystem.httpmanager.DoMainModel;
 import com.test.medicalsystem.httpmanager.HttpRequest;
 import com.test.medicalsystem.httpmanager.HttpRequsetModel;
 import com.test.medicalsystem.httpmanager.MethodModel;
@@ -33,15 +24,7 @@ import com.test.medicalsystem.ui.ChooseDialog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.UnsupportedEncodingException;
-import java.util.HashMap;
-import java.util.Map;
-
 import cz.msebera.android.httpclient.Header;
-import cz.msebera.android.httpclient.HeaderElement;
-import cz.msebera.android.httpclient.ParseException;
-import cz.msebera.android.httpclient.entity.StringEntity;
-import cz.msebera.android.httpclient.message.BasicHeader;
 
 
 public class LoginFragment extends Fragment implements View.OnClickListener{
@@ -71,9 +54,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        initData();
-        initView();
-        initEvent();
+//        initData();
+//        initView();
+//        initEvent();
     }
     private void initData()
     {
@@ -90,13 +73,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (!Tool.isNetWorkActive(getContext()))
-                {
-                    Toast.makeText(getContext(), "并没哟有联网", Toast.LENGTH_SHORT).show();
-                }else
-                {
-                    Toast.makeText(getContext(), "联网", Toast.LENGTH_SHORT).show();
-                }
+                //                测试开始
+               
+//                测试结束
             }
         });
         //测试结束
@@ -154,6 +133,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener{
                     }
 
                 }
+
 
                 break;
             default:

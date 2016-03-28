@@ -5,6 +5,13 @@ package com.test.medicalsystem.tools;
  */
 public class SPreference {
     public static class Login{
+        public static String sp_name = "Login";
         public static String domain = "domain";
+        /**
+         * 用户信息
+         */
+        public static String userinfo = "USER_INFO";
     }
+
+
 }

@@ -100,7 +100,7 @@ public class Tool {
      */
     public static void checkNetWorkStatues(Context context, final CheckNetWorkListener checkNetWorkListener)
     {
-        String domain = Tool.getSp(context, SPreference.Login.class.getName(), SPreference.Login.domain);
+        String domain = Tool.getSp(context, SPreference.Login.sp_name, SPreference.Login.domain);
         Log.d("domain==", domain);
         if (!domain.equals("")){
 //            已经将domain记录在了sp中
@@ -173,6 +173,47 @@ public class Tool {
     }
 
     /**
+     * 将返回的jsonobject保存到sharepreference
+     * @param context
+     * @param spClass
+     * @param spName
+     * @param jsonObject
+     */
+    public static void saveSPByJsonObject(Context context, String spClass, String spName,JSONObject jsonObject)
+    {
+        Log.d("spclass",spClass);
+        Log.d("spName",spName);
+        String spValue = jsonObject.toString();
+        SharedPreferences share = context.getSharedPreferences(spClass, Context.MODE_PRIVATE);
+        SharedPreferences.Editor edit = share.edit(); //编辑文件
+        edit.putString(spName, spValue);
+        edit.commit();  //保存数据信息
+    }
+
+    /**
+     * 返回的是json字符串
+     * @param context
+     * @param spClass
+     * @param spName
+     * @return
+     */
+    public static JSONObject getSPInJsonObject(Context context, String spClass, String spName)
+    {
+        Log.d("getspclass",spClass);
+        Log.d("getspName",spName);
+        SharedPreferences sharedPreferences = context.getSharedPreferences(spClass, Context.MODE_PRIVATE);
+        String result = sharedPreferences.getString(spName, "");
+        JSONObject jsonObject = null;
+        try {
+            jsonObject = new JSONObject(result);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+
+    }
+
+    /**
      * 获得屏幕的宽度
      * @param activity
      * @return
@@ -215,19 +256,22 @@ public class Tool {
         }
         return flag;
     }
-    public boolean isConnectingToInternet(){
-        ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        if (connectivity != null)
-        {
-            Network[] networks = connectivity.getAllNetworks();
-            if (info != null)
-                for (int i = 0; i < info.length; i++)
-                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
-                    {
-                        return true;
-                    }
 
-        }
-        return false;
-    }
+//    public boolean isConnectingToInternet(){
+//        ConnectivityManager connectivity = (ConnectivityManager) _context.getSystemService(Context.CONNECTIVITY_SERVICE);
+//        if (connectivity != null)
+//        {
+//            Network[] networks = connectivity.getAllNetworks();
+//            if (info != null)
+//                for (int i = 0; i < info.length; i++)
+//                    if (info[i].getState() == NetworkInfo.State.CONNECTED)
+//                    {
+//                        return true;
+//                    }
+//
+//        }
+//        return false;
+//    }
+
+
 }
