@@ -33,7 +33,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme.NoActionBar">
+        android:theme="@style/AppTheme">
         <activity android:name="com.test.medicalsystem.medicalsystem.LaunchScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,7 +43,8 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name="com.test.medicalsystem.login.LoginActivity" />
-        <activity android:name=".TestActivity" />
+        <activity android:name=".TestActivity"
+            />
         <activity android:name="com.test.medicalsystem.commonclass.BaseActivity" />
         <activity android:name="com.test.medicalsystem.login.LoginActivityV2"></activity>
     </application>

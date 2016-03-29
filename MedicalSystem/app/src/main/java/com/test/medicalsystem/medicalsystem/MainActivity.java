@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -20,7 +21,7 @@ private TestFragment testFragment;
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.setTitle("My Title");
         toolbar.setSubtitle("this is sub title");
-        setSupportActionBar(toolbar);
+//        setSupportActionBar(toolbar);
         toolbar.showOverflowMenu();
 
         toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {

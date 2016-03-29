@@ -1,6 +1,7 @@
 package com.test.medicalsystem.login;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -19,6 +20,7 @@ import com.test.medicalsystem.httpmanager.HttpRequsetModel;
 import com.test.medicalsystem.httpmanager.MethodModel;
 import com.test.medicalsystem.login.model.UserModel;
 import com.test.medicalsystem.medicalsystem.R;
+import com.test.medicalsystem.medicalsystem.TestActivity;
 import com.test.medicalsystem.staticstring.AccessFunc;
 import com.test.medicalsystem.tools.SPreference;
 import com.test.medicalsystem.tools.Tool;
@@ -65,12 +67,14 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
         testButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                获取用户信息
-                JSONObject jsonObject = Tool.getSPInJsonObject(getContext(), SPreference.Login.sp_name, SPreference.Login.userinfo);
-                Log.d("用户信息", jsonObject.toString());
+//                actionbar测试
+                startActivity(new Intent(getContext(), TestActivity.class));
+
             }
         });
         //测试结束
+
+
     }
 
     @Override
@@ -169,5 +173,12 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
             return false;
         }
         return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setActionBarTitle(R.string.login);
+        setBackButtonHidden(true);
     }
 }

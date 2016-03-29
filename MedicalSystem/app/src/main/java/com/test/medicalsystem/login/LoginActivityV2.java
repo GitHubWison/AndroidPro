@@ -12,7 +12,7 @@ public class LoginActivityV2 extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setMiddleTitle(getResources().getString(R.string.login));
+//        setMiddleTitle(getResources().getString(R.string.login));
         if (loginFragmentV2 == null)
         {
             loginFragmentV2 = new LoginFragmentV2();

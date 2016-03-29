@@ -4,46 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/whiteColor"
     tools:context="com.test.medicalsystem.medicalsystem.TestActivity">
 
-    <LinearLayout
-        android:layout_weight="1"
-        android:id="@+id/top_linearlayout"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
 
-    <TextView
-        android:layout_weight="1"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="New Text"
-        android:id="@+id/left_textview" />
-
-    <TextView
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="New Text"
-        android:id="@+id/middle_textview"
-        android:layout_gravity="center_horizontal" />
-
-    <TextView
-        android:layout_weight="1"
-        android:gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="New Text"
-        android:id="@+id/right_textview"
-        android:layout_gravity="right" />
-    </LinearLayout>
-
-    <FrameLayout
-        android:layout_weight="11"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"></FrameLayout>
 </LinearLayout>

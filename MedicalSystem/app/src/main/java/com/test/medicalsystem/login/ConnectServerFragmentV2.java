@@ -151,4 +151,11 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
         return true;
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setActionBarTitle(R.string.define_domain);
+        setBackButtonHidden(false);
+    }
 }

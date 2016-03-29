@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,6 +43,22 @@ public abstract class CommonAbstractFragment extends Fragment {
                 R.anim.out_to_left, R.anim.in_from_left,
                 R.anim.out_to_right).replace(R.id.fragment_common_layout, fragment, cls.getName()).addToBackStack(null).commit();
 
+    }
+    /**
+     * 设置标题
+     * @param title 标题内容
+     */
+    public void setActionBarTitle(int titleId)
+    {
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(titleId);
+    }
+    /**
+     * 隐藏左侧的返回按钮
+     * @param isHidden
+     */
+    public void setBackButtonHidden(Boolean isHidden)
+    {
+        ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(!isHidden);
     }
 
 }

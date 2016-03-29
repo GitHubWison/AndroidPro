@@ -4,35 +4,35 @@
     android:background="@color/colorAccent"
     android:layout_height="fill_parent">
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="fill_parent">
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="fill_parent">-->
 
-        <TextView
-            android:layout_weight="1"
-            android:gravity="left|center"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="left"
-            android:id="@+id/left_textview" />
+        <!--<TextView-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="left|center"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="left"-->
+            <!--android:id="@+id/left_textview" />-->
 
-        <TextView
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="middle"
-            android:id="@+id/middle_textview" />
+        <!--<TextView-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="middle"-->
+            <!--android:id="@+id/middle_textview" />-->
 
-        <TextView
-            android:layout_weight="1"
-            android:gravity="right|center"
+        <!--<TextView-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="right|center"-->
 
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="right"
-            android:id="@+id/right_textview" />
-    </LinearLayout>
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:text="right"-->
+            <!--android:id="@+id/right_textview" />-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

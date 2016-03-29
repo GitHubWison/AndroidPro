@@ -6,42 +6,42 @@
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_weight="1"
-        android:layout_width="match_parent"
-        android:layout_height="0dip">
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_weight="1"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dip">-->
 
-        <TextView
-            android:layout_weight="0.3"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
-            android:gravity="center|left"
-            android:paddingLeft="@dimen/component_padding"
-            android:drawableLeft="@drawable/back"
-            android:text=""
-            android:id="@+id/left_textview" />
+        <!--<TextView-->
+            <!--android:layout_weight="0.3"-->
+            <!--android:layout_width="0dip"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:gravity="center|left"-->
+            <!--android:paddingLeft="@dimen/component_padding"-->
+            <!--android:drawableLeft="@drawable/back"-->
+            <!--android:text=""-->
+            <!--android:id="@+id/left_textview" />-->
 
-        <TextView
-            android:layout_weight="1"
-            android:gravity="center"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
+        <!--<TextView-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="0dip"-->
+            <!--android:layout_height="match_parent"-->
 
-            android:text="Title"
-            android:id="@+id/middle_textview" />
+            <!--android:text="Title"-->
+            <!--android:id="@+id/middle_textview" />-->
 
-        <TextView
-            android:layout_weight="0.3"
-            android:gravity="center"
-            android:layout_width="0dip"
-            android:layout_height="match_parent"
+        <!--<TextView-->
+            <!--android:layout_weight="0.3"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_width="0dip"-->
+            <!--android:layout_height="match_parent"-->
 
-            android:text=""
-            android:id="@+id/right_textview" />
+            <!--android:text=""-->
+            <!--android:id="@+id/right_textview" />-->
 
 
-    </LinearLayout>
+    <!--</LinearLayout>-->
 
     <FrameLayout
         android:layout_weight="11"
