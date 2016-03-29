@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/MedicalSystem.iml" filepath="$PROJECT_DIR$/MedicalSystem.iml" />
-      <module fileurl="file://$PROJECT_DIR$/android-gif-drawable-master/android-gif-drawable-master.iml" filepath="$PROJECT_DIR$/android-gif-drawable-master/android-gif-drawable-master.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/async-http-library/async-http-library.iml" filepath="$PROJECT_DIR$/async-http-library/async-http-library.iml" />
       <module fileurl="file://$PROJECT_DIR$/library/library.iml" filepath="$PROJECT_DIR$/library/library.iml" />

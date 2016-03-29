@@ -9,9 +9,11 @@ import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.loopj.android.http.JsonHttpResponseHandler;
 import com.test.medicalsystem.medicalsystem.R;
+import com.test.medicalsystem.tools.SPreference;
 import com.test.medicalsystem.tools.Tool;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
@@ -81,7 +83,21 @@ public class HttpRequest {
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                     super.onSuccess(statusCode, headers, response);
                                     Log.d("响应成功", response.toString());
-                                    listener.onSuccess(statusCode, headers, response);
+//                                    判断响应结果
+                                    try {
+                                        if (response.getBoolean("IsSuccess"))
+                                        {
+//                                            用户操作正确
+                                            listener.onSuccess(statusCode, headers, response);
+                                        }else
+                                        {
+//                                            用户输入的信息无效
+                                            Toast.makeText(httpRequsetModel.getContext(), response.getString("Message"), Toast.LENGTH_SHORT).show();
+                                        }
+
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                    }
 
                                 }
 
@@ -105,9 +121,9 @@ public class HttpRequest {
 
                 @Override
                 public void netOff() {
-                    Toast.makeText(httpRequsetModel.getContext(), "网路连接断开", Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(httpRequsetModel.getContext(), "网路连接断开", Toast.LENGTH_SHORT).show();
                 }
-            });
+            }, Tool.getSp(httpRequsetModel.getContext(), SPreference.Login.sp_name, SPreference.Login.domain));
 //        }else
 //        {
 //            Toast.makeText(httpRequsetModel.getContext(), "没有联网", Toast.LENGTH_SHORT).show();

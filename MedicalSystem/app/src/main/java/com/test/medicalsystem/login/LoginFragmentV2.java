@@ -88,7 +88,7 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
                 {
 //                    执行登录操作
                     String userName = userNameEditText.getText().toString();
-                    String passWord = (Tool.getMD5(passWordEditText.getText().toString())).toUpperCase();
+                    String passWord = Tool.getMD5(passWordEditText.getText().toString());
                     try {
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put("LoginName", userName);
