@@ -11,7 +11,12 @@ public class SPreference {
          * 用户信息
          */
         public static String userinfo = "USER_INFO";
+        /**
+         * 用户输入的用户名和密码
+         */
+        public static String userNameAndPwd = "USERNAMEPWD";
     }
+
 
 
 }

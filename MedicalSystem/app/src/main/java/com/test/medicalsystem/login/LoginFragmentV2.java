@@ -26,6 +26,7 @@ import com.test.medicalsystem.staticstring.AccessFunc;
 import com.test.medicalsystem.tools.SPreference;
 import com.test.medicalsystem.tools.Tool;
 import com.test.medicalsystem.ui.ChooseDialog;
+import com.test.medicalsystem.ui.LoadingDialog;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -69,7 +70,8 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
             @Override
             public void onClick(View v) {
 //                actionbar测试
-                startActivity(new Intent(getContext(), TestActivity.class));
+//                startActivity(new Intent(getContext(), TestActivity.class));
+                LoadingDialog.getInstance(getContext()).show();
 
             }
         });
@@ -91,20 +93,29 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
 //                登录操作
                 if (isUserNameOrPasswordNotNullAndHasServerAddress())
                 {
+                    Log.d("test","ceshi");
+
 //                    执行登录操作
-                    String userName = userNameEditText.getText().toString();
-                    String passWord = Tool.getMD5(passWordEditText.getText().toString());
+                    final String userName = userNameEditText.getText().toString();
+                    final String passWord = Tool.getMD5(passWordEditText.getText().toString());
                     try {
                         JSONObject jsonObject = new JSONObject();
                         jsonObject.put("LoginName", userName);
                         jsonObject.put("Password", passWord);
                         jsonObject.put("AppId", "PreHospitalCare");
-                        HttpRequsetModel httpRequsetModel = new HttpRequsetModel(jsonObject, MethodModel.spellURL(domain, MethodModel.login), null, getActivity(), false);
+                        final HttpRequsetModel httpRequsetModel = new HttpRequsetModel(jsonObject, MethodModel.spellURL(domain, MethodModel.login), null, getActivity(), false);
                         HttpRequest request = new HttpRequest(httpRequsetModel);
+
                         request.sendRequest(new HttpRequest.GetResponseListener() {
                             @Override
                             public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+
                                 try {
+//                                    保存用户信息
+                                    JSONObject nameAndPwd = new JSONObject();
+                                    nameAndPwd.put("userName", userName);
+                                    nameAndPwd.put("passWord", passWord);
+                                    Tool.saveSPByJsonObject(httpRequsetModel.getContext(), SPreference.Login.sp_name, SPreference.Login.userNameAndPwd, nameAndPwd);
                                     userMsg = new UserModel(response.getJSONObject("Value"));
                                     if (!userMsg.isUserHasAccess(AccessFunc.PHEP_80))
                                     {
@@ -125,6 +136,7 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
 
                             @Override
                             public void onFailure(int statusCode, Header[] headers, JSONObject response) {
+
 
                             }
                         });

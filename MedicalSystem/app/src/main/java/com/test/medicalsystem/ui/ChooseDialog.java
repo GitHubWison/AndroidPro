@@ -62,11 +62,12 @@ public class ChooseDialog extends Dialog implements View.OnClickListener{
     private void initViews()
     {
         dataChoseDialog = this;
+        int width = Tool.getscreenWidth((Activity) context) < Tool.getscreenHeight((Activity) context) ? Tool.getscreenWidth((Activity) context) : Tool.getscreenHeight((Activity) context);
         tipsTextView = (TextView)findViewById(R.id.tips_textview);
 
-        tipsTextView.setLayoutParams(new LinearLayout.LayoutParams(Tool.getscreenWidth((Activity) context)*2/3, Tool.getscreenWidth((Activity) context)*1/3));
+        tipsTextView.setLayoutParams(new LinearLayout.LayoutParams(width*2/3, width*1/3));
         dialog_linearlayout=(LinearLayout)findViewById(R.id.dialogs_linearlayout);
-        dialog_linearlayout.setLayoutParams(new LinearLayout.LayoutParams(Tool.getscreenWidth((Activity) context)*2/3, Tool.getscreenWidth((Activity) context)*1/9));
+        dialog_linearlayout.setLayoutParams(new LinearLayout.LayoutParams(width*2/3,width*1/9));
 
         confirmTextView = (TextView)findViewById(R.id.confirm_textview);
         cancelTextView = (TextView)findViewById(R.id.cancel_textview);

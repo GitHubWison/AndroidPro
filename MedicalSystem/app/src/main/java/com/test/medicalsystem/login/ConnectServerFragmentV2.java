@@ -22,6 +22,7 @@ import com.test.medicalsystem.tools.NetAsynTask;
 import com.test.medicalsystem.tools.SPreference;
 import com.test.medicalsystem.tools.Tool;
 import com.test.medicalsystem.ui.ChooseDialog;
+import com.test.medicalsystem.ui.LoadingDialog;
 
 import org.json.JSONObject;
 
@@ -70,6 +71,7 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
             case R.id.test_button:
                 if (isInputDomainNotNull())
                 {
+                    LoadingDialog.getInstance(getContext()).show();
                     final String url = domainEditText.getText().toString() ;
                     Log.d("url===",url);
                     Tool.checkNetWorkStatues(getContext(), new Tool.CheckNetWorkListener() {
@@ -81,6 +83,7 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
                             client.post(url +  MethodModel.testConnection , new JsonHttpResponseHandler() {
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
+                                    LoadingDialog.getInstance(getContext()).dismiss();
                                     super.onSuccess(statusCode, headers, response);
                                     //                            弹出是否要保存到sp的选择框
                                     new ChooseDialog(getContext(), getResources().getString(R.string.alert_issave_internet_setting), true, new ChooseDialog.OnSureListener() {
@@ -103,6 +106,7 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                                     super.onFailure(statusCode, headers, throwable, errorResponse);
+                                    LoadingDialog.getInstance(getContext()).dismiss();
                                     Toast.makeText(getContext(), getResources().getString(R.string.alert_wrong_internet), Toast.LENGTH_SHORT).show();
                                 }
                             });
@@ -110,6 +114,7 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
 
                         @Override
                         public void netOff() {
+                            LoadingDialog.getInstance(getContext()).dismiss();
 
                         }
                     }, url);

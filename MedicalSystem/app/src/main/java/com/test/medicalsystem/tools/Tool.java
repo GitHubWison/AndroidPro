@@ -10,10 +10,12 @@ import android.os.AsyncTask;
 import android.system.ErrnoException;
 import android.util.DisplayMetrics;
 import android.util.Log;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.test.medicalsystem.commonclass.BaseActivity;
 import com.test.medicalsystem.httpmanager.HttpRequest;
 import com.test.medicalsystem.httpmanager.HttpRequsetModel;
 import com.test.medicalsystem.httpmanager.MethodModel;
@@ -328,6 +330,22 @@ public class Tool {
 //            new NetAsynTask().execute(url);
 //
 //    }
+    public static void hideKeyBoard(BaseActivity activity)
+    {
+//        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        InputMethodManager imm = (InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE);
 
+        boolean isOpen=imm.isActive();//isOpen若返回true，则表示输入法打开
+        if (isOpen){
+            try{
+                ((InputMethodManager)activity.getSystemService(Context.INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS);
+            }catch (NullPointerException nullE)
+            {
+
+            }
+
+
+        }
+    }
 
 }

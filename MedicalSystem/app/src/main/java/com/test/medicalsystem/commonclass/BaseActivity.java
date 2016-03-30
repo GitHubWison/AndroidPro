@@ -1,6 +1,7 @@
 package com.test.medicalsystem.commonclass;
 
 import android.annotation.TargetApi;
+import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -14,10 +15,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.test.medicalsystem.medicalsystem.R;
+import com.test.medicalsystem.tools.Tool;
 
 import org.w3c.dom.Text;
 
@@ -74,10 +77,11 @@ public class BaseActivity extends AppCompatActivity {
     /**
      *
      * @param fragment
-     * @param isInit 如果是初始化则不需要用动画加载(可能有问题)
+     * @param isInit 如果是初始化则不需要用动画加载fragment
      */
     public void jumpToFragment(Fragment fragment, Class cls)
     {
+        Tool.hideKeyBoard(this);
         if (fragment == null)
         {
             fragment = new Fragment();
@@ -133,12 +137,14 @@ public class BaseActivity extends AppCompatActivity {
         return true;
     }
 
-    //封装这个方法，（传入一个jsonarray同时设置好item）
+    //封装这个方法，（）
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
         if (item.getItemId() == android.R.id.home)
         {
             //                触发返回事件
+            Tool.hideKeyBoard(this);
             if (getSupportFragmentManager().popBackStackImmediate())
             {
                 getSupportFragmentManager().popBackStack();

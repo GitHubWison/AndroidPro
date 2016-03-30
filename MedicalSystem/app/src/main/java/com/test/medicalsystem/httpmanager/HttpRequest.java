@@ -11,6 +11,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import com.test.medicalsystem.medicalsystem.R;
 import com.test.medicalsystem.tools.SPreference;
 import com.test.medicalsystem.tools.Tool;
+import com.test.medicalsystem.ui.LoadingDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -50,6 +51,8 @@ public class HttpRequest {
 //        检查是否联网
 //        if (Tool.isNetWorkActive(httpRequsetModel.getContext()))
 //        {
+//        开始loading动画
+        LoadingDialog.getInstance(httpRequsetModel.getContext()).show();
             //        检查网路是否通畅
             Tool.checkNetWorkStatues(httpRequsetModel.getContext(), new Tool.CheckNetWorkListener() {
                 @Override
@@ -83,6 +86,7 @@ public class HttpRequest {
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                     super.onSuccess(statusCode, headers, response);
                                     Log.d("响应成功", response.toString());
+                                    LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
 //                                    判断响应结果
                                     try {
                                         if (response.getBoolean("IsSuccess"))
@@ -106,6 +110,7 @@ public class HttpRequest {
                                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                                     super.onFailure(statusCode, headers, throwable, errorResponse);
                                     Log.d("failure", "网络连接出错");
+                                    LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
                                     listener.onFailure(statusCode, headers, errorResponse);
                                     Toast.makeText(httpRequsetModel.getContext(), httpRequsetModel.getContext().getResources().getString(R.string.normal_wrong) , Toast.LENGTH_SHORT).show();
 
@@ -114,6 +119,7 @@ public class HttpRequest {
                             });
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
+                            LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
                         }
 
                     }
@@ -122,6 +128,7 @@ public class HttpRequest {
                 @Override
                 public void netOff() {
 //                    Toast.makeText(httpRequsetModel.getContext(), "网路连接断开", Toast.LENGTH_SHORT).show();
+                    LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
                 }
             }, Tool.getSp(httpRequsetModel.getContext(), SPreference.Login.sp_name, SPreference.Login.domain));
 //        }else
