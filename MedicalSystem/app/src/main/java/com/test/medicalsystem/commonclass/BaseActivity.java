@@ -2,6 +2,7 @@ package com.test.medicalsystem.commonclass;
 
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.v4.app.Fragment;
@@ -154,5 +155,13 @@ public class BaseActivity extends AppCompatActivity {
             }
         }
         return true;
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(getRequestedOrientation()!=ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE){
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        }
     }
 }
