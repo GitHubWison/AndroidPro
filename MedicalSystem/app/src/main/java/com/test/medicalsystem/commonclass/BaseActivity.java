@@ -26,6 +26,15 @@ import org.w3c.dom.Text;
  */
 public class BaseActivity extends AppCompatActivity {
     private ActionBar bar;
+    private boolean showActionSetting;
+
+    public boolean isShowActionSetting() {
+        return showActionSetting;
+    }
+
+    public void setShowActionSetting(boolean showActionSetting) {
+        this.showActionSetting = showActionSetting;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,7 +48,7 @@ public class BaseActivity extends AppCompatActivity {
 
     public void initDatas()
     {
-
+        showActionSetting = false;
     }
     public void initViews()
     {
@@ -67,22 +76,17 @@ public class BaseActivity extends AppCompatActivity {
      * @param fragment
      * @param isInit 如果是初始化则不需要用动画加载(可能有问题)
      */
-    private void jumpToFragment(Fragment fragment, boolean isInit, Class cls)
+    public void jumpToFragment(Fragment fragment, Class cls)
     {
         if (fragment == null)
         {
             fragment = new Fragment();
         }
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        if (isInit)
-        {
-            fragmentTransaction.add(R.id.login_frame_layout,fragment,cls.getName()).commit();
-        }else
-        {
+
             fragmentTransaction.setCustomAnimations(R.anim.in_from_right,
                     R.anim.out_to_left, R.anim.in_from_left,
-                    R.anim.out_to_right).replace(R.id.login_frame_layout, fragment, cls.getName()).addToBackStack(null).commit();
-        }
+                    R.anim.out_to_right).replace(R.id.fragment_common_layout, fragment, cls.getName()).addToBackStack(null).commit();
 
     }
 
@@ -121,33 +125,27 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+//        if (!isShowActionSetting()){
+//            MenuItem actionSettings = menu.findItem(R.id.action_setting_serveradd);
+//            actionSettings.setVisible(false);
+//        }
+
         return true;
     }
 
     //封装这个方法，（传入一个jsonarray同时设置好item）
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
+        if (item.getItemId() == android.R.id.home)
         {
-            case R.id.action_settings:
-                Toast.makeText(this, "111111", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_settings2:
-                Toast.makeText(this, "222222", Toast.LENGTH_SHORT).show();
-                break;
-            case android.R.id.home:
-//                触发返回事件
-                if (getSupportFragmentManager().popBackStackImmediate())
-                {
-                    getSupportFragmentManager().popBackStack();
-                }else
-                {
-                    finish();
-                }
-                break;
-
-            default:
-                break;
+            //                触发返回事件
+            if (getSupportFragmentManager().popBackStackImmediate())
+            {
+                getSupportFragmentManager().popBackStack();
+            }else
+            {
+                finish();
+            }
         }
         return true;
     }

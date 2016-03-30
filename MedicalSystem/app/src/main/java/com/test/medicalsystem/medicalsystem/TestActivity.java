@@ -57,16 +57,16 @@ public class TestActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId())
         {
-            case R.id.action_settings:
-                Toast.makeText(this, "111111", Toast.LENGTH_SHORT).show();
-                break;
-            case R.id.action_settings2:
-                Toast.makeText(this, "222222", Toast.LENGTH_SHORT).show();
-                break;
-            case android.R.id.home:
-                Log.d("home", "hhhhhhh");
-                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
-                break;
+//            case R.id.action_settings:
+//                Toast.makeText(this, "111111", Toast.LENGTH_SHORT).show();
+//                break;
+//            case R.id.action_settings2:
+//                Toast.makeText(this, "222222", Toast.LENGTH_SHORT).show();
+//                break;
+//            case android.R.id.home:
+//                Log.d("home", "hhhhhhh");
+//                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
+//                break;
 
             default:
                 break;

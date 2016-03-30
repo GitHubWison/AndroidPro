@@ -24,4 +24,5 @@
     <string name="normal_wrong">出错啦</string>
     <string name="user_has_no_access">你没有权限</string>
     <string name="title_activity_common">CommonActivity</string>
+    <string name="setting_server_address">设置服务器地址</string>
 </resources>

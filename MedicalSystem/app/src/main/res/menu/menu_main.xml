@@ -1,10 +1,10 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
     <item
-        android:id="@+id/action_settings"
-        android:title="Settingsss111">
+        android:id="@+id/action_setting_serveradd"
+        android:title="@string/setting_server_address">
     </item>
-    <item
-        android:id="@+id/action_settings2"
-        android:title="Settings222">
-    </item>
+    <!--<item-->
+        <!--android:id="@+id/action_settings2"-->
+        <!--android:title="Settings222">-->
+    <!--</item>-->
 </menu>

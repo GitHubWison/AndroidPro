@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.test.medicalsystem.commonclass.BaseActivity;
 import com.test.medicalsystem.commonclass.CommonAbstractFragment;
 import com.test.medicalsystem.httpmanager.HttpRequest;
 import com.test.medicalsystem.httpmanager.HttpRequsetModel;
@@ -54,7 +55,7 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
 
     @Override
     public void initDatas() {
-
+        setShouldShowSettingIcon(true);
     }
 
     @Override
@@ -180,5 +181,6 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
         super.onResume();
         setActionBarTitle(R.string.login);
         setBackButtonHidden(true);
+
     }
 }

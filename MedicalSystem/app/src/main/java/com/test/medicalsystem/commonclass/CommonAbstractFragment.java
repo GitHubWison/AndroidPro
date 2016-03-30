@@ -7,17 +7,38 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 
 import com.test.medicalsystem.medicalsystem.R;
+
+import java.lang.reflect.Field;
 
 /**
  * Created by xuqiwei-Office on 2016/3/28.
  */
 public abstract class CommonAbstractFragment extends Fragment {
+    /**
+     * 是否显示右侧的。。。
+     */
+    private boolean shouldShowSettingIcon;
+
+    public CommonAbstractFragment() {
+        shouldShowSettingIcon = false;
+    }
+
+    public void setShouldShowSettingIcon(boolean shouldShowSettingIcon) {
+        this.shouldShowSettingIcon = shouldShowSettingIcon;
+    }
+
+    public boolean isShouldShowSettingIcon() {
+        return shouldShowSettingIcon;
+    }
+
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         initDatas();
         initViews();
         initEvents();
@@ -61,4 +82,11 @@ public abstract class CommonAbstractFragment extends Fragment {
         ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(!isHidden);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((BaseActivity)getActivity()).setShowActionSetting(isShouldShowSettingIcon());
+        getActivity().invalidateOptionsMenu();
+
+    }
 }

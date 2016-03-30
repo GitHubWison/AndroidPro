@@ -30,9 +30,9 @@ private TestFragment testFragment;
                 int itemId = item.getItemId();
                 switch (itemId)
                 {
-                    case R.id.action_settings:
-                        System.out.println("settings");
-                        break;
+//                    case R.id.action_settings:
+//                        System.out.println("settings");
+//                        break;
 
                 }
                 return false;

@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.JsonHttpResponseHandler;
+import com.test.medicalsystem.commonclass.BaseActivity;
 import com.test.medicalsystem.commonclass.CommonAbstractFragment;
 import com.test.medicalsystem.httpmanager.MethodModel;
 import com.test.medicalsystem.medicalsystem.R;
@@ -31,8 +32,10 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
     private Button saveSettingButton;
     private EditText domainEditText;
 
+
     public ConnectServerFragmentV2() {
         // Required empty public constructor
+
     }
 
 
@@ -43,7 +46,7 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
 
     @Override
     public void initDatas() {
-
+//        setShouldShowSettingIcon(false);
     }
 
     @Override
@@ -51,6 +54,7 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
         testButton = (Button)getView().findViewById(R.id.test_button);
         saveSettingButton = (Button)getView().findViewById(R.id.save_setting_button);
         domainEditText = (EditText)getView().findViewById(R.id.domain_edittext);
+
     }
 
     @Override
@@ -155,7 +159,9 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("ConnectServerFrag", "ConnectServerFragmentV2resume");
         setActionBarTitle(R.string.define_domain);
         setBackButtonHidden(false);
+
     }
 }
