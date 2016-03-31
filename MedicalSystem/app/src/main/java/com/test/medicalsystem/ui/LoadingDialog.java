@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Window;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 
+import com.loopj.android.http.AsyncHttpClient;
 import com.test.medicalsystem.medicalsystem.R;
 import com.test.medicalsystem.tools.Tool;
 
@@ -24,6 +26,7 @@ public class LoadingDialog extends Dialog {
     private String tips;
     private ProgressBar progressBar;
     private LinearLayout pb_linearlayout;
+    private AsyncHttpClient asyncHttpClient;
     private static LoadingDialog instanceLoadingBar;
 
     /**
@@ -36,17 +39,19 @@ public class LoadingDialog extends Dialog {
         this.context = context;
         this.tips = tips;
     }
-    public LoadingDialog(Context context)
+    public LoadingDialog(Context context,AsyncHttpClient client)
     {
         super(context);
         this.context = context;
         this.tips = "";
+        this.asyncHttpClient = client;
     }
-    public synchronized  static LoadingDialog getInstance(Context context)
+
+    public synchronized  static LoadingDialog getInstance(Context context, AsyncHttpClient client)
     {
         if (instanceLoadingBar == null)
         {
-            instanceLoadingBar = new LoadingDialog(context);
+            instanceLoadingBar = new LoadingDialog(context, client);
         }
         return instanceLoadingBar;
     }
@@ -77,5 +82,14 @@ public class LoadingDialog extends Dialog {
 
     private void initDatas() {
         
+    }
+
+    @Override
+    public void dismiss() {
+        super.dismiss();
+//        终止网络请求
+//        asyncHttpClient.cancelAllRequests(true);
+        asyncHttpClient.cancelRequests(context, true);
+        Log.d("dismiss","终止网络请求");
     }
 }

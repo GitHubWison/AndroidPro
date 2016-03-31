@@ -71,19 +71,21 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
             case R.id.test_button:
                 if (isInputDomainNotNull())
                 {
-                    LoadingDialog.getInstance(getContext()).show();
+                    final AsyncHttpClient client = new AsyncHttpClient();
+//                    client.setResponseTimeout(1000);
+                    LoadingDialog.getInstance(getContext(), client).show();
                     final String url = domainEditText.getText().toString() ;
                     Log.d("url===",url);
                     Tool.checkNetWorkStatues(getContext(), new Tool.CheckNetWorkListener() {
                         @Override
                         public void netOn() {
-                            AsyncHttpClient client = new AsyncHttpClient();
+
                             client.setTimeout(5000);
                             client.setBasicAuth("Mdsd.Phep.Api", "mdsd.phep.api.2005$");
                             client.post(url +  MethodModel.testConnection , new JsonHttpResponseHandler() {
                                 @Override
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
-                                    LoadingDialog.getInstance(getContext()).dismiss();
+                                    LoadingDialog.getInstance(getContext(), client).dismiss();
                                     super.onSuccess(statusCode, headers, response);
                                     //                            弹出是否要保存到sp的选择框
                                     new ChooseDialog(getContext(), getResources().getString(R.string.alert_issave_internet_setting), true, new ChooseDialog.OnSureListener() {
@@ -106,15 +108,15 @@ public class ConnectServerFragmentV2 extends CommonAbstractFragment implements V
                                 @Override
                                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                                     super.onFailure(statusCode, headers, throwable, errorResponse);
-                                    LoadingDialog.getInstance(getContext()).dismiss();
-                                    Toast.makeText(getContext(), getResources().getString(R.string.alert_wrong_internet), Toast.LENGTH_SHORT).show();
+                                    LoadingDialog.getInstance(getContext(), client).dismiss();
+                                    Toast.makeText(getActivity(), getResources().getString(R.string.alert_wrong_internet), Toast.LENGTH_SHORT).show();
                                 }
                             });
                         }
 
                         @Override
                         public void netOff() {
-                            LoadingDialog.getInstance(getContext()).dismiss();
+                            LoadingDialog.getInstance(getContext(), client).dismiss();
 
                         }
                     }, url);

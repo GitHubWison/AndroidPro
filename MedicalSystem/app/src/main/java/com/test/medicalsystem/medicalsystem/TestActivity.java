@@ -16,61 +16,31 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.test.medicalsystem.commonclass.BaseActivity;
 
-public class TestActivity extends AppCompatActivity {
+import org.greenrobot.eventbus.EventBus;
 
+
+public class TestActivity extends BaseActivity {
+    private FragmentOne testFragment;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_test);
-        ActionBar bar = getSupportActionBar();
-        if (bar!=null)
+        if (testFragment == null)
         {
-
-            bar.setDisplayHomeAsUpEnabled(true);
-            bar.setHomeButtonEnabled(true);
-
-            Log.d("bar", "非空");
+            testFragment = new FragmentOne();
         }
-        else
-        {
-            Log.d("bar","空");
-        }
-//        View item = (View)findViewById(R.id.home);
-//        item.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Toast.makeText(TestActivity.this, "home", Toast.LENGTH_SHORT).show();
-//            }
-//        });
+
+        initFragment(testFragment, FragmentOne.class);
+
 
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_main, menu);
-        return true;
+    protected void onDestroy() {
+        super.onDestroy();
+//        EventBus.getDefault().unregister(this);
+
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId())
-        {
-//            case R.id.action_settings:
-//                Toast.makeText(this, "111111", Toast.LENGTH_SHORT).show();
-//                break;
-//            case R.id.action_settings2:
-//                Toast.makeText(this, "222222", Toast.LENGTH_SHORT).show();
-//                break;
-//            case android.R.id.home:
-//                Log.d("home", "hhhhhhh");
-//                Toast.makeText(this, "home", Toast.LENGTH_SHORT).show();
-//                break;
-
-            default:
-                break;
-        }
-        return true;
-    }
 }

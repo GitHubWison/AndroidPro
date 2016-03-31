@@ -1,2 +1,2 @@
-include ':app', ':async-http-library'
+include ':app', ':async-http-library', ':EventBus'
 include ':library'

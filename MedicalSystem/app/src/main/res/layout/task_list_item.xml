@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/task_list_half_padding"
+        android:layout_marginTop="@dimen/task_list_half_padding"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/left_linear_layout"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_marginRight="@dimen/task_list_half_padding"
+            android:background="@color/grayColor"
+            android:padding="@dimen/task_list_padding"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/component_margin"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="道德"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/task_list_top_text_size"
+                    android:id="@+id/patient_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/task_list_padding"
+                    android:layout_marginRight="@dimen/task_list_padding"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/task_list_top_text_size"
+                    android:id="@+id/patient_gender" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/task_list_top_text_size"
+                    android:text="New Text"
+                    android:id="@+id/patient_age" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_no" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_address" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_MPDS" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+
+
+
+        <LinearLayout
+            android:id="@+id/right_linear_layout"
+            android:orientation="vertical"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:padding="@dimen/task_list_padding"
+            android:layout_marginLeft="@dimen/task_list_half_padding"
+            android:background="@color/lightRedColor"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_weight="3"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginBottom="@dimen/component_margin"
+                android:layout_gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/task_list_top_text_size"
+                    android:id="@+id/patient_name2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/task_list_padding"
+                    android:layout_marginRight="@dimen/task_list_padding"
+                    android:textSize="@dimen/task_list_top_text_size"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_gender2" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:textSize="@dimen/task_list_top_text_size"
+                    android:id="@+id/patient_age2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_no2" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_address2" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_weight="2"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="0dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="New Text"
+                    android:textColor="@color/whiteColor"
+                    android:id="@+id/patient_MPDS2" />
+
+            </LinearLayout>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
+

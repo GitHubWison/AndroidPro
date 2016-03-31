@@ -8,5 +8,13 @@
     <color name="whiteColor">#FFFFFF</color>
     <color name="grayColor">#C7C7C7</color>
     <color name="lightBlueColor">#AB82FF</color>
+    <!-- 任务列表的背景颜色-->
+    <color name="task_bg1">#61B0E9</color>
+    <color name="task_bg2">#7F60E9</color>
+    <color name="task_bg3">#58D369</color>
+    <color name="task_bg4">#EA7E62</color>
+
+    <!--整体的背景色-->
+    <color name="app_bg_color">#D1E3E7</color>
 
 </resources>

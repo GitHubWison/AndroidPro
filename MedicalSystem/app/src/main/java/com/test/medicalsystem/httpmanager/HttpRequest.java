@@ -51,13 +51,14 @@ public class HttpRequest {
 //        检查是否联网
 //        if (Tool.isNetWorkActive(httpRequsetModel.getContext()))
 //        {
+        final AsyncHttpClient client = new AsyncHttpClient();
 //        开始loading动画
-        LoadingDialog.getInstance(httpRequsetModel.getContext()).show();
+        LoadingDialog.getInstance(httpRequsetModel.getContext(), client).show();
             //        检查网路是否通畅
             Tool.checkNetWorkStatues(httpRequsetModel.getContext(), new Tool.CheckNetWorkListener() {
                 @Override
                 public void netOn() {
-                    AsyncHttpClient client = new AsyncHttpClient();
+
                     client.setBasicAuth("Mdsd.Phep.Api", "mdsd.phep.api.2005$");
                     client.setTimeout(8000);
                     Log.d("url连接",httpRequsetModel.getUrl()+httpRequsetModel.getJsonObject());
@@ -86,7 +87,7 @@ public class HttpRequest {
                                 public void onSuccess(int statusCode, Header[] headers, JSONObject response) {
                                     super.onSuccess(statusCode, headers, response);
                                     Log.d("响应成功", response.toString());
-                                    LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
+                                    LoadingDialog.getInstance(httpRequsetModel.getContext(), client).dismiss();
 //                                    判断响应结果
                                     try {
                                         if (response.getBoolean("IsSuccess"))
@@ -110,7 +111,7 @@ public class HttpRequest {
                                 public void onFailure(int statusCode, Header[] headers, Throwable throwable, JSONObject errorResponse) {
                                     super.onFailure(statusCode, headers, throwable, errorResponse);
                                     Log.d("failure", "网络连接出错");
-                                    LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
+                                    LoadingDialog.getInstance(httpRequsetModel.getContext(), client).dismiss();
                                     listener.onFailure(statusCode, headers, errorResponse);
                                     Toast.makeText(httpRequsetModel.getContext(), httpRequsetModel.getContext().getResources().getString(R.string.normal_wrong) , Toast.LENGTH_SHORT).show();
 
@@ -119,7 +120,7 @@ public class HttpRequest {
                             });
                         } catch (UnsupportedEncodingException e) {
                             e.printStackTrace();
-                            LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
+                            LoadingDialog.getInstance(httpRequsetModel.getContext(), client).dismiss();
                         }
 
                     }
@@ -128,7 +129,7 @@ public class HttpRequest {
                 @Override
                 public void netOff() {
 //                    Toast.makeText(httpRequsetModel.getContext(), "网路连接断开", Toast.LENGTH_SHORT).show();
-                    LoadingDialog.getInstance(httpRequsetModel.getContext()).dismiss();
+                    LoadingDialog.getInstance(httpRequsetModel.getContext(), client).dismiss();
                 }
             }, Tool.getSp(httpRequsetModel.getContext(), SPreference.Login.sp_name, SPreference.Login.domain));
 //        }else

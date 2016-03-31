@@ -19,7 +19,10 @@ import com.test.medicalsystem.commonclass.BaseActivity;
 import com.test.medicalsystem.httpmanager.HttpRequest;
 import com.test.medicalsystem.httpmanager.HttpRequsetModel;
 import com.test.medicalsystem.httpmanager.MethodModel;
+import com.test.medicalsystem.medicalsystem.R;
+import com.test.medicalsystem.tasklist.model.TaskListModel;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -32,6 +35,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 import cz.msebera.android.httpclient.Header;
@@ -46,6 +50,8 @@ public class Tool {
     存储登录信息的sharepreference
      */
     public static String LOGIN_SP = "LOGIN";
+
+    public static int[] taskListBgColor = {R.color.task_bg1, R.color.task_bg2,R.color.task_bg3,R.color.task_bg4};
 
     /**
      * MD5加密程序
@@ -346,6 +352,51 @@ public class Tool {
 
 
         }
+    }
+    public static JSONObject getDivAndModel(int x, int y)
+    {
+        int div = x/y;
+        int model = x%y;
+        JSONObject jsonObject = new JSONObject();
+
+        try {
+            jsonObject.put("div", div);
+            jsonObject.put("model", model);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return jsonObject;
+    }
+
+    /**
+     * 将从网络上获取的任务列表转换成两两配对的array
+     * @param originalArray
+     * @return
+     */
+    public static JSONArray changeToArray(JSONArray originalArray)
+    {
+        JSONArray array = new JSONArray();
+        JSONObject jsonObject;
+        for(int i = 0; i < (originalArray.length()/2 + (originalArray.length()%2)); i++)
+        {
+            jsonObject = new JSONObject();
+            try {
+                jsonObject.put("FIRST",new TaskListModel((JSONObject)originalArray.get(2 * i)));
+                if ((2 * i + 1) < originalArray.length()){
+                    jsonObject.put("SECOND", new TaskListModel((JSONObject)originalArray.get(2 * i + 1)));
+                }
+                else
+                {
+                    Log.d("else","else");
+                    jsonObject.put("SECOND", new TaskListModel());
+                }
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+            array.put(jsonObject);
+        }
+        Log.d("array",array.toString());
+        return array;
     }
 
 }

@@ -23,6 +23,7 @@ import com.test.medicalsystem.login.model.UserModel;
 import com.test.medicalsystem.medicalsystem.R;
 import com.test.medicalsystem.medicalsystem.TestActivity;
 import com.test.medicalsystem.staticstring.AccessFunc;
+import com.test.medicalsystem.tasklist.TaskListActivity;
 import com.test.medicalsystem.tools.SPreference;
 import com.test.medicalsystem.tools.Tool;
 import com.test.medicalsystem.ui.ChooseDialog;
@@ -71,7 +72,11 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
             public void onClick(View v) {
 //                actionbar测试
 //                startActivity(new Intent(getContext(), TestActivity.class));
-                LoadingDialog.getInstance(getContext()).show();
+//                LoadingDialog.getInstance(getContext(), client).show();
+//               JSONObject jsonObject =  Tool.getDivAndModel(19, 2);
+//                Log.d("jsonObject==",jsonObject.toString());
+                startActivity(new Intent(getContext(), TaskListActivity.class));
+
 
             }
         });
@@ -124,7 +129,9 @@ public class LoginFragmentV2 extends CommonAbstractFragment implements View.OnCl
                                     else
                                     {
 //                                        用户拥有权限
-                                        Toast.makeText(getContext(), "用户拥有权限", Toast.LENGTH_SHORT).show();
+//                                        Toast.makeText(getContext(), "用户拥有权限", Toast.LENGTH_SHORT).show();
+//                                        跳转到任务列表
+                                        startActivity(new Intent(getContext(), TaskListActivity.class));
                                     }
 //                                    保存用户信息
                                     Tool.saveSPByJsonObject(getContext(), SPreference.Login.sp_name, SPreference.Login.userinfo, response.getJSONObject("Value"));

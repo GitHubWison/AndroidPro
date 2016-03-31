@@ -130,10 +130,10 @@ public class BaseActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
-//        if (!isShowActionSetting()){
-//            MenuItem actionSettings = menu.findItem(R.id.action_setting_serveradd);
-//            actionSettings.setVisible(false);
-//        }
+        if (!isShowActionSetting()){
+            MenuItem actionSettings = menu.findItem(R.id.action_setting_serveradd);
+            actionSettings.setVisible(false);
+        }
 
         return true;
     }
